@@ -121,7 +121,7 @@
     #lock {
       display: none; /* Hidden by default */
       position: absolute;
-      bottom: 20px;
+      bottom: -50px;
       right: 20px;
       font-size: 32px;
       cursor: pointer;
@@ -167,17 +167,21 @@
   <div id="congratulations">
     <div class="gif-container">
       <!-- REPLACE THIS GIF URL WITH YOURS -->
-      <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Celebration GIF">
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHNjNXl0OTBoZnU4NmY0MG4zemEwdTZpcHNvdnI1dmltOHF4c3BqdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d7n2SwyX48GaE9PA3Q/giphy.gif" alt="Celebration GIF">
     </div>
-    <h1>Congratulations! 💖</h1>
-    <p>You've made me the happiest person alive!</p>
+    <h1>YAY! 💖</h1>
+    <p>You've made me the happiest person alive! It has been blessing to spend every moment with you (including the one in the gif). <br> 
+      Our first year went by too quick.. One of my memorable memory was us holding hands first the first time at PROM 😭😭. <br>
+      Hopefully, the memory we make in the future will not be as awkawrd as that one. I am eagered to see what the future has entailed for us. <br>
+      -Love Kyan I hope you liked my website lol.
+      😁😁😁😁. </p>
   </div>
 
   <!-- Changed from hiddenHeart to lock -->
   <div id="lock" onclick="showVideo()">🔒</div>
 
   <div id="videoContainer">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="715" src="https://youtube.com/shorts/nGTFgxlj_dQ" frameborder="0" allowfullscreen></iframe>
   </div>
 
   <script>
@@ -190,21 +194,32 @@
     const videoContainer = document.getElementById('videoContainer');
 
     const messages = [
-      "Are you sure?",
-      "Really sure?",
-      "Think again!",
-      "Last chance!",
-      "Surely not?",
-      "You might regret this!",
-      "Give it another thought!",
-      "Are you absolutely certain?",
-      "This could be a mistake!",
-      "Have a heart!",
-      "Don't be so cold!",
-      "Change of heart?",
-      "Wouldn't you reconsider?",
+      "You thought I would give up that fast 🙄🙄🙄🙄",
+      "you think this is funny...",
+      "why you still trying?",
+      "surely not?",
+      "gotta move faster to click this",
+      "That one stung a little.",
+      "Kinda harsh, don't you think?",
+      "I didn’t know it was like that",
+      "eat some yam",
+      "🤔🤔🤔",
+      "😭😭😭",
+      "💀💀💀",
+      "consider the big green thing",
+      "The big green thing is judging you rn.",
       "Is that your final answer?",
-      "You're breaking my heart ;("
+      "In that case......",
+      " ",
+      " ",
+      " ",
+      "why u still here?",
+      "......",
+      ".....",
+      "....",
+      "...",
+      "..",
+      ". ;("
     ];
 
     let messageIndex = 0;
@@ -251,7 +266,7 @@
       createConfetti();
       setTimeout(() => {
         lock.style.display = 'block'; // Show lock instead of heart
-      }, 2000);
+      }, 6000);
     });
 
     function showVideo() {
@@ -261,7 +276,7 @@
     function createConfetti() {
       const emojis = ['🎉', '🎊', '💖', '✨', '🌸'];
       
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 80; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
         confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];

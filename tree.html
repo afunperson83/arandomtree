@@ -18,6 +18,10 @@
       0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
+    @keyframes explode {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
+    }
 
     body {
       font-family: 'Times New Roman', serif;
@@ -31,6 +35,32 @@
       align-items: center;
       overflow: auto;
       position: relative;
+    }
+
+    #passwordModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    #passwordInput {
+      padding: 10px;
+      margin: 10px 0;
+      width: 200px;
+      font-size: 16px;
+    }
+
+    #errorMsg {
+      color: red;
+      display: none;
+      margin-top: 10px;
     }
 
     .container {
@@ -178,6 +208,19 @@
       😁😁😁😁 </p>
   </div>
 
+  <div id="passwordModal">
+    <h3>Enter THE Video Date 🙄🙄</h3>
+    <input type="password" id="passwordInput" placeholder="MMDDYYYY format">
+    <button onclick="checkPassword()">Unlock</button>
+    <p id="errorMsg">Incorrect date! Try again ❤️</p>
+  </div>
+
+  <div id="lock" onclick="showPasswordModal()">🔒</div>
+
+  <div id="videoContainer">
+    <iframe width="560" height="715" src="https://www.youtube.com/embed/nGTFgxlj_dQ?autoplay=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <!-- Changed from hiddenHeart to lock -->
   <div id="lock" onclick="showVideo()">🔒</div>
 
@@ -193,6 +236,12 @@
     const congratulations = document.getElementById('congratulations');
     const lock = document.getElementById('lock');
     const videoContainer = document.getElementById('videoContainer');
+    const passwordModal = document.getElementById('passwordModal');
+    const passwordInput = document.getElementById('passwordInput');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // Set your secret password here (MMDDYYYY format)
+    const secretPassword = "09082024";
 
     const messages = [
       "You thought I would give up that fast 🙄🙄🙄🙄",
@@ -269,7 +318,23 @@
         lock.style.display = 'block'; // Show lock instead of heart
       }, 6000);
     });
+    function showPasswordModal() {
+      passwordModal.style.display = 'block';
+    }
 
+    function checkPassword() {
+      if(passwordInput.value === secretPassword) {
+        passwordModal.style.display = 'none';
+        videoContainer.style.display = 'block';
+        // Manually start the video if needed
+        const iframe = document.querySelector('iframe');
+        iframe.src += "&autoplay=1";
+      } else {
+        errorMsg.style.display = 'block';
+        setTimeout(() => errorMsg.style.display = 'none', 2000);
+      }
+    }
+    
     function showVideo() {
       videoContainer.style.display = 'block';
     }

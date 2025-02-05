@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    @keyframes temptingShake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes confetti {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    body {
+      font-family: 'Times New Roman', serif;
+      text-align: center;
+      background-color: pink;
+      margin: 0;
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: auto;
+      position: relative;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 10;
+      min-width: 300px;
+      width: auto;
+      transition: all 0.3s ease-in-out;
+      border: 2px solid #ff69b4;
+      overflow: visible;
+    }
+
+    h1 {
+      color: #d32f2f;
+      font-size: min(3rem, 6vw);
+      margin: 0 0 30px 0;
+      line-height: 1.3;
+      padding: 10px;
+      border: 2px dashed #ff69b4;
+      border-radius: 10px;
+      word-wrap: break-word;
+      max-width: 80vw;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .buttons button {
+      font-size: 1.5rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      max-width: 90%;
+    }
+
+    #yesButton {
+      background-color: #4caf50;
+      color: white;
+      transform-origin: center center;
+      animation: temptingShake 0.6s ease-in-out infinite;
+      animation-play-state: paused;
+    }
+
+    #noButton {
+      transition: all 0.5s ease-in-out;
+      position: relative;
+    }
+
+    #congratulations {
+      display: none;
+      font-size: 2rem;
+      color: #d32f2f;
+      background: white;
+      padding: 60px 40px 30px; /* Increased top padding */
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      border: 2px solid #ff69b4;
+      z-index: 15;
+      position: relative;
+      min-height: 400px; /* Ensure minimum space */
+    }
+
+    .gif-container {
+      max-width: 300px;
+      margin: -30px auto 20px; /* Reduced negative margin */
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 20;
+    }
+
+    .gif-container img {
+      width: 100%;
+      height: auto;
+    }
+
+    #lock {
+      display: none; /* Hidden by default */
+      position: absolute;
+      bottom: -50px;
+      right: 20px;
+      font-size: 32px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s;
+    }
+
+    #lock:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .confetti {
+      position: absolute;
+      font-size: 24px;
+      animation: confetti linear infinite;
+      pointer-events: none;
+    }
+
+    #videoContainer {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      z-index: 25;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="valentineText">Will You Be My Valentine?</h1>
+    <div class="buttons">
+      <button id="yesButton">Yes</button>
+      <button id="noButton">No</button>
+    </div>
+  </div>
+
+  <div id="congratulations">
+    <div class="gif-container">
+      <!-- REPLACE THIS GIF URL WITH YOURS -->
+      <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHNjNXl0OTBoZnU4NmY0MG4zemEwdTZpcHNvdnI1dmltOHF4c3BqdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/d7n2SwyX48GaE9PA3Q/giphy.gif" alt="Celebration GIF">
+    </div>
+    <h1>YAY! 💖</h1>
+    <p>You've made me the happiest person alive! It has been blessing to spend every moment with you (including the one in the gif). <br> 
+      Our first year went by too quick... One of my memorable memory was holding your hand for the first time at PROM 😭😭. <br>
+      Hopefully, the memory we make in the future will not be as awkward as that one. I am eagered to see what the future has entailed for us. <br>
+      -Love Kyan I hope you liked my website lol.
+      😁😁😁😁 </p>
+  </div>
+
+  <!-- Changed from hiddenHeart to lock -->
+  <div id="lock" onclick="showVideo()">🔒</div>
+
+  <div id="videoContainer">
+    <iframe width="560" height="715" src="https://youtube.com/shorts/nGTFgxlj_dQ" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    const container = document.querySelector('.container');
+    const valentineText = document.getElementById('valentineText');
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const congratulations = document.getElementById('congratulations');
+    const lock = document.getElementById('lock');
+    const videoContainer = document.getElementById('videoContainer');
+
+    const messages = [
+      "You thought I would give up that fast 🙄🙄🙄🙄",
+      "you think this is funny...",
+      "why you still trying?",
+      "surely not?",
+      "gotta move faster to click this",
+      "That one stung a little.",
+      "Kinda harsh, don't you think?",
+      "I didn’t know it was like that",
+      "eat some yam",
+      "🤔🤔🤔",
+      "😭😭😭",
+      "💀💀💀",
+      "consider the big green thing",
+      "The big green thing is judging you rn.",
+      "Is that your final answer?",
+      "In that case......",
+      " ",
+      " ",
+      " ",
+      "why u still here?",
+      "......",
+      ".....",
+      "....",
+      "...",
+      "..",
+      ". ;("
+    ];
+
+    let messageIndex = 0;
+    let yesScale = 1;
+    const maxScale = 8;
+    let shakeIntensity = 0;
+    const originalYesSize = {
+      fontSize: parseFloat(getComputedStyle(yesButton).fontSize),
+      paddingX: parseFloat(getComputedStyle(yesButton).paddingLeft),
+      paddingY: parseFloat(getComputedStyle(yesButton).paddingTop)
+    };
+
+    noButton.addEventListener('mouseover', () => {
+      const maxX = window.innerWidth - noButton.offsetWidth - 20;
+      const maxY = window.innerHeight - noButton.offsetHeight - 20;
+      noButton.style.position = 'fixed';
+      noButton.style.left = `${Math.max(10, Math.min(maxX, Math.random() * maxX))}px`;
+      noButton.style.top = `${Math.max(10, Math.min(maxY, Math.random() * maxY))}px`;
+
+      valentineText.textContent = messages[messageIndex % messages.length];
+      messageIndex++;
+
+      if (yesScale < maxScale) {
+        yesScale += 0.15;
+        const growthRate = yesScale < 5 ? 0.15 : 0.15 * (1 - (yesScale - 5) / maxScale);
+        yesScale += growthRate;
+
+        yesButton.style.fontSize = `${originalYesSize.fontSize * yesScale}px`;
+        yesButton.style.padding =
+          `${originalYesSize.paddingY * yesScale}px ${originalYesSize.paddingX * yesScale}px`;
+
+        shakeIntensity = Math.min(1, yesScale / maxScale);
+        yesButton.style.animation =
+          `temptingShake ${0.6 - (shakeIntensity * 0.3)}s ease-in-out infinite`;
+        yesButton.style.animationPlayState = 'running';
+      }
+
+      container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    yesButton.addEventListener('click', () => {
+      container.style.display = 'none';
+      congratulations.style.display = 'block';
+      createConfetti();
+      setTimeout(() => {
+        lock.style.display = 'block'; // Show lock instead of heart
+      }, 6000);
+    });
+
+    function showVideo() {
+      videoContainer.style.display = 'block';
+    }
+
+    function createConfetti() {
+      const emojis = ['🎉', '🎊', '💖', '✨', '🌸'];
+      
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        confetti.style.rotate = `${Math.random() * 360}deg`;
+        document.body.appendChild(confetti);
+      }
+    }
+  </script>
+</body>
+</html>
